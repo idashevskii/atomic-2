@@ -4,5 +4,3 @@ services:
       dockerfile: Dockerfile.dev
     volumes:
       - ./app:/code/app
-    ports:
-      - "7860:7860" # direct access

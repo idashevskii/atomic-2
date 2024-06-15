@@ -16,6 +16,8 @@ services:
       - OPENAI_BASE_URL=$OPENAI_BASE_URL
       - OPENAI_API_KEY=$OPENAI_API_KEY
       - LLM=$LLM
+    ports:
+      - "7860:7860"
 
   qdrant:
     image: qdrant/qdrant:v1.9.5
