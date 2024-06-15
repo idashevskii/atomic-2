@@ -12,3 +12,7 @@ services:
       network: host
     restart: always
     logging: *logging
+    environment:
+      - OPENAI_BASE_URL=$OPENAI_BASE_URL
+      - OPENAI_API_KEY=$OPENAI_API_KEY
+      - LLM=$LLM
