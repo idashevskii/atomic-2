@@ -25,7 +25,7 @@ def vote(data: gr.LikeData, chat):
 
 def build_gradio():
     # Function to handle the user's message and generate a response
-    with gr.Blocks(analytics_enabled=False) as demo:
+    with gr.Blocks(analytics_enabled=False, css=".built-with{display:none!important}") as demo:
         with gr.Row():
             chatbot = gr.Chatbot(scale=5)
             callop=gr.Button("Позвать оператора", visible=False, scale=1)#, link="help.greenatom.com")
@@ -41,10 +41,9 @@ def build_gradio():
 
 demo = build_gradio()
 
-if __name__ == "__main__":
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s - %(levelname)s - %(message)s',
+                    datefmt='%Y-%m-%d %H:%M:%S')
 
-    logging.basicConfig(level=logging.INFO,
-                        format='%(asctime)s - %(levelname)s - %(message)s',
-                        datefmt='%Y-%m-%d %H:%M:%S')
-    # Launch the interface
-    demo.launch(server_name='0.0.0.0', ssl_verify=False)
+# Launch the interface
+demo.launch(server_name='0.0.0.0', ssl_verify=False)
