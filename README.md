@@ -1,12 +1,12 @@
 ## Run locally
 
-- Copy `.env.test` to `.env`
+- Copy file `.env.test` to `.env`
 
 ```bash
 docker-compose up -d --build
 ```
 
-Open in browser: `http://localhost:7860/`
+- Open in browser: `http://localhost:7860/`
 
+- qdrant dashboard: `http://localhost:6333/dashboard`
 
-qdrant dashboard: `http://localhost:6333/dashboard`
