@@ -6,7 +6,7 @@
 docker compose up -d --build
 ```
 
-- Open in browser: `http://localhost:7860/`
+- Open in browser: `http://localhost:8080/`
 
 - qdrant dashboard: `http://localhost:6333/dashboard`
 
