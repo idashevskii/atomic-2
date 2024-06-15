@@ -7,7 +7,7 @@
 ```bash
 docker compose up -d --build
 ```
-  ## Анализ требрваний 
+  ## Анализ требований 
 ![diag](https://github.com/idashevskii/atomic-2/assets/59705773/63eef94e-ca6e-434a-b76a-3f584ce2cb1a)
 ![image](https://github.com/idashevskii/atomic-2/assets/59705773/cc6f6a5a-676b-47bf-b451-dea4473be7c6)
   ## Архитектура 
