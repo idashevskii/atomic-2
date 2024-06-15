@@ -4,7 +4,7 @@ from qdrant_client.http import models
 from qdrant_client import QdrantClient
 from qdrant_client.http.models import Distance, VectorParams, PointStruct
 
-QDRANT_LOCATION = 'http://atomic2.open-core.ru'
+QDRANT_LOCATION = "http://qdrant"#'http://atomic2.open-core.ru'
 
 COLL_NAME = 'rtm'
 
