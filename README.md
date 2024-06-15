@@ -3,7 +3,7 @@
 - Copy file `.env.test` to `.env`
 
 ```bash
-docker-compose up -d --build
+docker compose up -d --build
 ```
 
 - Open in browser: `http://localhost:7860/`
