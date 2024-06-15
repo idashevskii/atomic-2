@@ -1,7 +1,9 @@
 import logging
 import gradio as gr
 
+from app.admin import build_admin
 from llm_stub import infer
+from fastapi import FastAPI
 
 def respond(message, chat_history):
     response = infer("Answer briefly in Russian language", message)
@@ -41,9 +43,19 @@ def build_gradio():
 
 demo = build_gradio()
 
-logging.basicConfig(level=logging.INFO,
-                    format='%(asctime)s - %(levelname)s - %(message)s',
-                    datefmt='%Y-%m-%d %H:%M:%S')
 
-# Launch the interface
-demo.launch(server_name='0.0.0.0', ssl_verify=False)
+app = FastAPI()
+
+app = gr.mount_gradio_app(app, build_admin(), path="/admin")
+
+app = gr.mount_gradio_app(app, demo, path="/")
+
+if __name__ == "__main__":
+
+    logging.basicConfig(level=logging.INFO,
+                        format='%(asctime)s - %(levelname)s - %(message)s',
+                        datefmt='%Y-%m-%d %H:%M:%S')
+    # Launch the interface
+    #demo.launch(server_name='0.0.0.0', ssl_verify=False)
+    import uvicorn
+    uvicorn.run(app,host="0.0.0.0", port=7680)
