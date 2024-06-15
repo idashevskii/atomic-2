@@ -1,0 +1,14 @@
+x-logging: &logging
+  options:
+    max-size: "256k"
+    max-file: "1"
+  driver: json-file
+
+name: atomic-2
+services:
+  app:
+    build:
+      context: ./app
+      network: host
+    restart: always
+    logging: *logging

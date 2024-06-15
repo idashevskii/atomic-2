@@ -1,0 +1,8 @@
+services:
+  app:
+    build:
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./app:/code/app
+    # ports:
+    #   - "8080:80" # direct access
