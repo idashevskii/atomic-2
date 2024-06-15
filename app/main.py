@@ -43,19 +43,16 @@ def build_gradio():
 
 demo = build_gradio()
 
-
 app = FastAPI()
 
 app = gr.mount_gradio_app(app, build_admin(), path="/admin")
 
 app = gr.mount_gradio_app(app, demo, path="/")
 
-if __name__ == "__main__":
-
-    logging.basicConfig(level=logging.INFO,
-                        format='%(asctime)s - %(levelname)s - %(message)s',
-                        datefmt='%Y-%m-%d %H:%M:%S')
-    # Launch the interface
-    #demo.launch(server_name='0.0.0.0', ssl_verify=False)
-    import uvicorn
-    uvicorn.run(app,host="0.0.0.0", port=7680)
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s - %(levelname)s - %(message)s',
+                    datefmt='%Y-%m-%d %H:%M:%S')
+# Launch the interface
+#demo.launch(server_name='0.0.0.0', ssl_verify=False)
+import uvicorn
+uvicorn.run(app,host="0.0.0.0", port=7680)
