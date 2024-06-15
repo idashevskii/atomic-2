@@ -8,3 +8,4 @@
 docker-compose up -d --build
 ```
 
+Open in browser: `http://localhost:7860/`
