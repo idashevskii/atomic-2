@@ -1,11 +1,3 @@
-import os
-
-os.environ['OPENAI_BASE_URL']='https://integrate.api.nvidia.com/v1'
-os.environ['OPENAI_API_KEY']='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'
-os.environ['LLM']='meta/llama3-70b-instruct'
-
-
-
 import logging
 import gradio as gr
 
@@ -50,10 +42,9 @@ def build_gradio():
 demo = build_gradio()
 
 if __name__ == "__main__":
-    
-    
+
     logging.basicConfig(level=logging.INFO,
                         format='%(asctime)s - %(levelname)s - %(message)s',
                         datefmt='%Y-%m-%d %H:%M:%S')
     # Launch the interface
-    demo.launch(share=True)
+    demo.launch(server_name='0.0.0.0', ssl_verify=False)
