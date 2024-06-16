@@ -54,6 +54,8 @@ docker compose up -d --build
 Посмотреть пример работы системы можно на следующем изображении:
 
 ![Пример работы системы](https://github.com/idashevskii/atomic-2/assets/59705773/6b6a3d89-0264-43b5-9c4b-82d805297fdc)
+![image](https://github.com/idashevskii/atomic-2/assets/59705773/71d2a522-9351-4da7-8b83-211e388d15e1)
+
 
 ## Использование API
 
