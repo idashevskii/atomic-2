@@ -12,7 +12,7 @@
 
 ## Локальное развертывание
 
-```
+```bash
 cd local_app
 python3 main.py
 ```
@@ -24,40 +24,40 @@ python3 main.py
 1. Скопируйте файл `.env.test` в `.env`.
 2. Запустите контейнеры с помощью Docker Compose:
 
-   ```bash
-   docker compose up -d --build
-   ```
+```bash
+docker compose up -d --build
+```
 
 ## Анализ требований
 
 Проект разработан на основе тщательного анализа требований. Диаграммы и описания требований можно найти по следующим ссылкам:
 
-- ![Диаграмма требований 1](https://github.com/idashevskii/atomic-2/assets/59705773/63eef94e-ca6e-434a-b76a-3f584ce2cb1a)
-- ![Диаграмма требований 2](https://github.com/idashevskii/atomic-2/assets/59705773/cc6f6a5a-676b-47bf-b451-dea4473be7c6)
+![Диаграмма требований 1](https://github.com/idashevskii/atomic-2/assets/59705773/63eef94e-ca6e-434a-b76a-3f584ce2cb1a)
+![Диаграмма требований 2](https://github.com/idashevskii/atomic-2/assets/59705773/cc6f6a5a-676b-47bf-b451-dea4473be7c6)
 
 ## Архитектура
 
 Архитектура системы разработана для обеспечения масштабируемости и эффективности. Подробности архитектуры можно посмотреть на следующей диаграмме:
 
-- ![Архитектура системы](https://github.com/idashevskii/atomic-2/assets/59705773/3cecdd26-1e1b-470b-b6e2-eaba963e71dd)
+![Архитектура системы](https://github.com/idashevskii/atomic-2/assets/59705773/3cecdd26-1e1b-470b-b6e2-eaba963e71dd)
 
 ## Технологический стек
 
 Проект использует современные технологии для обеспечения высокой производительности и надёжности:
 
-- ![Технологический стек](https://github.com/idashevskii/atomic-2/assets/59705773/6861f446-ae38-4d80-83b5-16d2d08c38de)
+![Технологический стек](https://github.com/idashevskii/atomic-2/assets/59705773/6861f446-ae38-4d80-83b5-16d2d08c38de)
 
 ## Пример работы системы
 
 Посмотреть пример работы системы можно на следующем изображении:
 
-- ![Пример работы системы](https://github.com/idashevskii/atomic-2/assets/59705773/6b6a3d89-0264-43b5-9c4b-82d805297fdc)
+![Пример работы системы](https://github.com/idashevskii/atomic-2/assets/59705773/6b6a3d89-0264-43b5-9c4b-82d805297fdc)
 
 ## Использование API
 
 На платформе предусмотрена возможность использования функционала через API. Интерфейс для взаимодействия с API доступен в пользовательском интерфейсе в нижней части экрана:
 
-- ![Интерфейс API](https://github.com/idashevskii/atomic-2/assets/59705773/17a73066-9ba9-4f22-bb58-cb0b9c4f9744)
+![Интерфейс API](https://github.com/idashevskii/atomic-2/assets/59705773/17a73066-9ba9-4f22-bb58-cb0b9c4f9744)
 
 ## Заключение
 
