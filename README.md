@@ -14,7 +14,7 @@
 
 ```
 cd local_app
-main.py
+python3 main.py
 ```
 
 ## Локальное развёртывание через докер
