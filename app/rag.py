@@ -1,6 +1,7 @@
 # from transformers import logging
 # logging.set_verbosity_error() # set_verbosity_warning()
 
+import logging
 import warnings
 
 warnings.filterwarnings("ignore")
@@ -9,8 +10,9 @@ from sentence_transformers import SentenceTransformer
 from sentence_transformers.models import Pooling, Transformer
 from qdrant_client import QdrantClient
 import requests
-from config import llm_base_url, llm_api_key
+from config import llm_base_url, llm_api_key, qdrant_host
 
+ANS_NOT_FOUND_TEXT="Ответ не найден"
 
 def get_bi_encoder(bi_encoder_name):
     raw_model = Transformer(model_name_or_path=bi_encoder_name)
@@ -36,7 +38,7 @@ def str_to_vec(bi_encoder, text):
 
 
 # Создаем подключение к векторной БД
-qdrant_client = QdrantClient("qdrant", port=6333)
+qdrant_client = QdrantClient(qdrant_host, port=6333)
 
 
 def vec_search(bi_encoder, query, n_top_cos):
@@ -87,13 +89,15 @@ COLL_NAME = "rtm"
 
 
 def get_rag_ans(query):
-    COLL_NAME = "rtm"
+    
+    logging.info("Encoder init: started")
     bi_encoder, vec_size = get_bi_encoder("BAAI/bge-m3")
+    logging.info("Encoder init: done")
     print("bi_encoder загружен")
 
     prompt_temp = """<|begin_of_text|><|start_header_id|>system<|end_header_id|>
 Ты — Сайга, русскоязычный автоматический ассистент. Ты разговариваешь с людьми и помогаешь им.<|eot_id|><|start_header_id|>user<|end_header_id|>
-Используй только следующий контекст, чтобы кратко ответить на вопрос в конце. Если ответа не найден напиши "Ответ не найден". Не пытайся выдумывать ответ.
+Используй только следующий контекст, чтобы кратко ответить на вопрос в конце. Если ответа не найден напиши "{ans_not_found}". Не пытайся выдумывать ответ.
 Контекст:
 ###
 {chunks_join}
@@ -102,12 +106,16 @@ def get_rag_ans(query):
 ###
 {query}<|eot_id|><|start_header_id|>assistant<|end_header_id|>"""
 
+    logging.info("Vectorizing: started")
     top_chunks, top_files = vec_search(bi_encoder, query, 5)
+    logging.info("Vectorizing: done")
 
     join_sym = "\n"
     chunks_join = join_sym.join(top_chunks)
-    prompt = prompt_temp.format(chunks_join=chunks_join, query=query)
+    prompt = prompt_temp.format(chunks_join=chunks_join, query=query, ans_not_found=ANS_NOT_FOUND_TEXT)
     ##print(prompt)
+    logging.info("Rag: started")
     respond = get_rag_response(prompt)
+    logging.info("Rag: done")
 
     return respond

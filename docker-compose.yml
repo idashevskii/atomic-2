@@ -13,6 +13,7 @@ services:
     restart: always
     logging: *logging
     environment:
+      - QDRANT_HOST=$QDRANT_HOST
       - LLM_BASE_URL=$LLM_BASE_URL
       - LLM_API_KEY=$LLM_API_KEY
     ports:
