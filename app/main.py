@@ -1,17 +1,29 @@
+import warnings
+warnings.filterwarnings('ignore')
+
 import logging
 import gradio as gr
 
-from llm_stub import infer
+from rag import get_rag_ans
+
+# from call_llm import get_output
+
+# from llm_stub import infer
 
 def respond(message, chat_history):
-    response = infer("Answer briefly in Russian language", message)
-    judge = infer("Is it a clear question which can be answered in the single word?. Answer YES or NO.", message)
-    logging.info("%s => [%s] %s ", message, judge, response)
-    l_judge = judge.lower()
-    if cant_give_a:=("нет" in l_judge or "no" in l_judge):
-        gr.Info("Переформулируйте вопрос")
+    
+    response = get_rag_ans(message)
+    
+    # response = infer("Answer briefly in Russian language", message)
+    # judge = infer("Is it a clear question which can be answered in the single word?. Answer YES or NO.", message)
+    # logging.info("%s => [%s] %s ", message, judge, response)
+    # l_judge = judge.lower()
+    # if cant_give_a:=("нет" in l_judge or "no" in l_judge):
+    #     gr.Info("Переформулируйте вопрос")
+    #     response = ' '
 
-    summon = len(chat_history)>0
+    # summon = len(chat_history)>0
+    cant_give_a = False
     chat_history.append((message, response if not cant_give_a else "Вопрос не ясен. Переформулируйте пожалуйста\n<details><summary>возможный ответ</summary>%s</details>"%response))
 
     return "", chat_history, gr.Button(visible=False)

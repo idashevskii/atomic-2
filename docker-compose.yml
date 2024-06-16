@@ -13,9 +13,8 @@ services:
     restart: always
     logging: *logging
     environment:
-      - OPENAI_BASE_URL=$OPENAI_BASE_URL
-      - OPENAI_API_KEY=$OPENAI_API_KEY
-      - LLM=$LLM
+      - LLM_BASE_URL=$LLM_BASE_URL
+      - LLM_API_KEY=$LLM_API_KEY
     ports:
       - "8080:7860"
 

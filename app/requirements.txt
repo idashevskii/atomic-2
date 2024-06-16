@@ -1,2 +1,4 @@
 gradio~=4.36.1
 openai~=1.34.0
+sentence-transformers==3.0.1
+qdrant_client==1.9.1 
